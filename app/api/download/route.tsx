@@ -409,7 +409,8 @@ function SADocument() {
 
 export async function GET() {
   const buffer = await renderToBuffer(<SADocument />)
-  return new Response(buffer, {
+  const uint8 = new Uint8Array(buffer)
+  return new Response(uint8, {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="SA-Blueprint-A-to-Z.pdf"',
