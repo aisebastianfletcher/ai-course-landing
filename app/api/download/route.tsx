@@ -1,10 +1,6 @@
-import { renderToBuffer, Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer'
+import { renderToBuffer, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer'
 
 export const dynamic = 'force-dynamic'
-
-Font.register({
-  family: 'Helvetica',
-})
 
 const green = '#16a34a'
 const darkText = '#111827'
