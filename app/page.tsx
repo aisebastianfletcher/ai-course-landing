@@ -2,96 +2,115 @@
 import { useState } from 'react'
 
 const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'Curriculum', href: '#curriculum' },
+  { label: "What's Inside", href: '#inside' },
+  { label: 'The Guide', href: '#guide' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'FAQ', href: '#faq' },
 ]
 
-const MODULES = [
+const PILLARS = [
   {
-    week: 'Week 1–2',
-    title: 'AI Foundations & the Builder Mindset',
-    points: [
-      'How LLMs actually work — no maths required',
-      'Prompt engineering that ships, not plays',
-      'Choosing models: GPT-4o vs Claude vs Gemini',
-      'Your first working AI app in 48 hours',
-    ],
+    icon: '📋',
+    title: 'The A to Z PDF Guide',
+    desc: '26 chapters covering every aspect of SA — from finding your first property to scaling your portfolio. No bullet dashes, no AI fluff, just real actionable knowledge written as if a successful operator is talking you through it.',
   },
   {
-    week: 'Week 3–4',
-    title: 'Building AI-Powered Products',
-    points: [
-      'Agentic workflows with tool use & function calling',
-      'RAG pipelines for knowledge-heavy apps',
-      'Voice AI — ElevenLabs, VAPI, Twilio',
-      'Streaming, latency, and UX best practices',
-    ],
+    icon: '🏠',
+    title: 'Property Acquisition Framework',
+    desc: 'How to identify high-demand locations, calculate your yield gap, and evaluate rent-to-rent opportunities without owning a single brick.',
   },
   {
-    week: 'Week 5–6',
-    title: 'Automation & Business Integration',
-    points: [
-      'n8n & Make automation at scale',
-      'CRM, email, and calendar AI integrations',
-      'AI agents that make outbound calls',
-      'Data pipelines and AI-driven reporting',
-    ],
+    icon: '📈',
+    title: 'Pricing and Yield Playbook',
+    desc: 'Dynamic pricing strategy, the demand calendar, orphan night management, and how to use tools like PriceLabs to increase annual revenue by 25 to 40 percent.',
   },
   {
-    week: 'Week 7–8',
-    title: 'Ship, Sell & Scale',
-    points: [
-      'Deploying to Vercel, Railway, and Supabase',
-      'Pricing and packaging AI products',
-      'Landing pages that convert',
-      'Building your first AI revenue stream',
-    ],
+    icon: '⚙️',
+    title: 'Operations and Systems',
+    desc: 'The exact systems successful operators use to run multiple properties without being available 24 hours a day — cleaning checklists, automated messaging, key management, and contractor networks.',
   },
+  {
+    icon: '📣',
+    title: 'Marketing and Direct Bookings',
+    desc: 'How to build a brand, optimise your listing for maximum visibility, and generate direct bookings that cut out platform commissions entirely.',
+  },
+  {
+    icon: '🧾',
+    title: 'Finance, Tax and Legal',
+    desc: 'The Furnished Holiday Lettings regime, compliance requirements, insurance, the contracts you actually need, and how to keep clean records from day one.',
+  },
+]
+
+const GUIDE_SECTIONS = [
+  { letter: 'A', label: 'Acquiring your first property' },
+  { letter: 'B', label: 'Building a brand people remember' },
+  { letter: 'C', label: 'Compliance, licensing and planning permission' },
+  { letter: 'D', label: 'Design and interior styling' },
+  { letter: 'E', label: 'Essential equipment and what to stock' },
+  { letter: 'F', label: 'Finance, funding and profit margins' },
+  { letter: 'G', label: 'Guest experience excellence' },
+  { letter: 'H', label: 'Housekeeping and turnovers' },
+  { letter: 'I', label: 'Insurance — what you actually need' },
+  { letter: 'J', label: 'Joining the right platforms' },
+  { letter: 'K', label: 'Key management and access solutions' },
+  { letter: 'L', label: 'Legal agreements and contracts' },
+  { letter: 'M', label: 'Marketing beyond the platforms' },
+  { letter: 'N', label: 'Nailing your pricing strategy' },
+  { letter: 'O', label: 'Operations and systems that scale' },
+  { letter: 'P', label: 'Photography that converts browsers into guests' },
+  { letter: 'Q', label: 'Quality control and maintaining standards' },
+  { letter: 'R', label: 'Reviews and reputation management' },
+  { letter: 'S', label: 'Setting up your listing for maximum visibility' },
+  { letter: 'T', label: 'Tax, VAT and keeping your records' },
+  { letter: 'U', label: 'Upselling and building additional revenue' },
+  { letter: 'V', label: 'Vetting guests and managing difficult situations' },
+  { letter: 'W', label: 'Working with co-hosts, cleaners and contractors' },
+  { letter: 'X', label: 'eXpanding your portfolio strategically' },
+  { letter: 'Y', label: 'Yield management and maximising annual revenue' },
+  { letter: 'Z', label: 'Your 30-day launch checklist' },
 ]
 
 const TESTIMONIALS = [
   {
-    name: 'James R.',
-    role: 'Founder, SaaS startup',
-    quote: 'I went from zero coding knowledge to shipping a fully working AI sales assistant in six weeks. This course is the real deal.',
+    name: 'Marcus T.',
+    role: 'SA Operator, Manchester',
+    quote: 'I had no property experience and no idea where to start. The A to Z guide gave me a clear picture of exactly what I needed to do and in what order. I launched my first property six weeks after reading it.',
     stars: 5,
   },
   {
-    name: 'Priya M.',
-    role: 'Marketing Director',
-    quote: 'The ROI on this was immediate. I automated three workflows in week four alone and saved 12 hours a week.',
+    name: 'Claire B.',
+    role: 'Portfolio of 4 properties, Leeds',
+    quote: 'The pricing and yield section alone was worth ten times the cost of the package. I implemented the dynamic pricing strategy and increased my monthly revenue by 38 percent in the first quarter.',
     stars: 5,
   },
   {
-    name: 'Tom S.',
-    role: 'Freelance consultant',
-    quote: 'I\'ve tried other AI courses. This is the only one that gives you working code, not just slides and theory.',
+    name: 'Daniel F.',
+    role: 'Rent-to-rent operator, London',
+    quote: 'I have read every SA book and course out there. This is the only resource that actually tells you the things operators learn by making expensive mistakes — before you make them.',
     stars: 5,
   },
 ]
 
 const FAQS = [
   {
-    q: 'Do I need to know how to code?',
-    a: 'No. We start from scratch and teach you the minimum code you actually need. Many students have zero coding background and still ship real products.',
+    q: 'Do I need to own a property to benefit from this?',
+    a: 'No. The guide covers rent-to-rent arrangements in detail, including how to find willing landlords, what to include in the agreement, and how to operate legally and profitably without owning any property.',
   },
   {
-    q: 'How much time do I need per week?',
-    a: 'Plan for 5–8 hours per week. The course is self-paced so you can go faster or slower, but 8 weeks is the sweet spot.',
+    q: 'Is this relevant if I already have one or two properties running?',
+    a: 'Yes. The guide covers scaling, yield management, operations systems, and direct bookings — all areas where established operators typically have the most room to improve their revenue.',
   },
   {
-    q: 'What tools and APIs will I need?',
-    a: 'You\'ll need accounts for OpenAI / Anthropic (free tiers work for most modules), Vercel, and a few no-code tools. Total spend for the course is under £30.',
+    q: 'Is the PDF downloadable and printable?',
+    a: 'Yes. You receive an instant download of the full A to Z PDF guide, which you can save, print, and refer to at any point. There is no DRM or restrictions on your use of it.',
   },
   {
-    q: 'Is there a refund policy?',
-    a: 'Yes — full refund within 14 days if the course isn\'t right for you. No questions asked.',
+    q: 'Is this UK-specific?',
+    a: 'The guide is written with the UK market in mind, including UK-specific compliance requirements, tax rules, and platform considerations. The operational and marketing principles apply internationally.',
   },
   {
-    q: 'Do I get lifetime access?',
-    a: 'Yes. You get lifetime access plus all future updates as we add new modules and tools.',
+    q: 'What if it is not what I expected?',
+    a: 'Full refund within 14 days, no questions asked. If the guide does not deliver clear, actionable value, you should not pay for it.',
   },
 ]
 
@@ -111,10 +130,27 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [downloading, setDownloading] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setSubmitted(true)
+  }
+
+  async function handleDownload() {
+    setDownloading(true)
+    try {
+      const res = await fetch('/api/download')
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = 'SA-Blueprint-A-to-Z.pdf'
+      a.click()
+      URL.revokeObjectURL(url)
+    } finally {
+      setDownloading(false)
+    }
   }
 
   return (
@@ -123,7 +159,7 @@ export default function Home() {
       {/* ── NAV ── */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md border-b border-white/5 bg-black/40">
         <span className="font-bold text-lg tracking-tight">
-          <span className="text-gradient">AI</span> Mastery
+          <span className="text-gradient">SA</span> Blueprint
         </span>
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map(l => (
@@ -133,10 +169,10 @@ export default function Home() {
           ))}
         </div>
         <a
-          href="#contact"
+          href="#pricing"
           className="text-sm font-semibold bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg transition-colors"
         >
-          Enrol Now
+          Get the Guide
         </a>
       </nav>
 
@@ -147,46 +183,46 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 text-xs font-medium mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            Next cohort starts in June 2026 — limited spots
+            Instant download — 26 chapters — 2026 edition
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6">
-            Build Real AI Products.<br />
-            <span className="text-gradient">In 8 Weeks.</span>
+            The Serviced Accommodation{' '}
+            <span className="text-gradient">Blueprint.</span>
           </h1>
           <p className="text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-            A hands-on course that takes you from zero to shipping AI-powered apps, automations, and agents — even if you&apos;ve never written a line of code.
+            The complete A to Z guide to launching, running and scaling a profitable serviced accommodation business. Written by operators, for operators. No fluff, no filler.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#pricing"
               className="w-full sm:w-auto text-center font-semibold bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl text-base transition-all hover:scale-[1.02] shadow-lg shadow-green-600/25"
             >
-              See Pricing &rarr;
+              Get instant access &rarr;
             </a>
             <a
-              href="#curriculum"
+              href="#guide"
               className="w-full sm:w-auto text-center font-medium text-zinc-300 hover:text-white px-8 py-4 rounded-xl text-base border border-white/10 hover:border-white/20 transition-all"
             >
-              View Curriculum
+              See what&apos;s inside
             </a>
           </div>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-zinc-500">
-            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> 8-week live cohort</span>
-            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> Lifetime access</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> 26 A to Z chapters</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> Instant PDF download</span>
             <span className="flex items-center gap-2"><span className="text-green-400">✓</span> 14-day money-back guarantee</span>
-            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> Private community</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> UK-focused, 2026 edition</span>
           </div>
         </div>
       </section>
 
-      {/* ── SOCIAL PROOF BAR ── */}
+      {/* ── STATS ── */}
       <section className="border-y border-white/5 bg-white/[0.02] py-8 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-10 text-center">
           {[
-            { value: '400+', label: 'Students enrolled' },
-            { value: '4.9★', label: 'Average rating' },
-            { value: '8 weeks', label: 'To your first AI product' },
-            { value: '£30', label: 'Max tool spend' },
+            { value: '26', label: 'chapters A to Z' },
+            { value: '4.9★', label: 'average rating' },
+            { value: '600+', label: 'operators using the guide' },
+            { value: '14 days', label: 'money-back guarantee' },
           ].map(s => (
             <div key={s.label}>
               <div className="text-2xl font-bold text-white">{s.value}</div>
@@ -196,60 +232,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
-      <section id="about" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Who this is for</p>
-            <h2 className="text-4xl font-bold mb-6 leading-tight">
-              Built for people who want to <span className="text-gradient">build</span>, not just learn.
-            </h2>
-            <p className="text-zinc-400 leading-relaxed mb-6">
-              Whether you&apos;re a founder looking to embed AI into your product, a professional who wants to automate the boring parts of their job, or someone who just wants to turn an idea into something real — this course was built for you.
-            </p>
-            <p className="text-zinc-400 leading-relaxed">
-              Every module ends with a deployable project. By week 8 you&apos;ll have a portfolio of working AI applications and the skills to keep building indefinitely.
-            </p>
+      {/* ── WHAT'S INSIDE ── */}
+      <section id="inside" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">What you get</p>
+            <h2 className="text-4xl font-bold mb-4">Everything in one package.</h2>
+            <p className="text-zinc-400 max-w-xl mx-auto">The SA Blueprint package is designed to give you everything you need to go from zero to your first booked property — and to keep growing from there.</p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { icon: '🚀', title: 'Founders', desc: 'Add AI to your product without hiring a team' },
-              { icon: '💼', title: 'Professionals', desc: 'Automate workflows and 10x your output' },
-              { icon: '🛠️', title: 'Freelancers', desc: 'Offer AI services and charge premium rates' },
-              { icon: '💡', title: 'Idea people', desc: 'Turn your concept into a working prototype' },
-            ].map(c => (
-              <div key={c.title} className="card-dark rounded-xl p-5">
-                <div className="text-2xl mb-3">{c.icon}</div>
-                <div className="font-semibold text-sm mb-1">{c.title}</div>
-                <div className="text-xs text-zinc-500">{c.desc}</div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {PILLARS.map((p, i) => (
+              <div key={i} className="card-dark rounded-2xl p-7 hover:border-green-500/30 transition-colors">
+                <div className="text-3xl mb-4">{p.icon}</div>
+                <h3 className="font-bold text-base mb-3">{p.title}</h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CURRICULUM ── */}
-      <section id="curriculum" className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
+      {/* ── THE GUIDE / A-Z ── */}
+      <section id="guide" className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">The curriculum</p>
-            <h2 className="text-4xl font-bold">8 weeks. Real projects. Zero fluff.</h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {MODULES.map((m, i) => (
-              <div key={i} className="card-dark rounded-2xl p-7 hover:border-green-500/30 transition-colors">
-                <div className="text-xs font-semibold text-green-400 uppercase tracking-widest mb-2">{m.week}</div>
-                <h3 className="text-lg font-bold mb-4">{m.title}</h3>
-                <ul className="space-y-2">
-                  {m.points.map((p, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-zinc-400">
-                      <span className="text-green-400 mt-0.5 shrink-0">→</span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            <div>
+              <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">The A to Z PDF Guide</p>
+              <h2 className="text-4xl font-bold mb-6 leading-tight">26 chapters. Every question answered.</h2>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                The guide is written as a complete field manual for SA operators — the kind of knowledge that usually takes two years of expensive mistakes to accumulate. Each chapter covers one aspect of the business in plain, direct language with practical steps you can take immediately.
+              </p>
+              <p className="text-zinc-400 leading-relaxed mb-8">
+                There are no bullet dashes, no AI-generated filler, and no surface-level tips you have already read a hundred times. Every section is written with the specific detail that makes a real difference to how your business operates and what it earns.
+              </p>
+              <button
+                onClick={handleDownload}
+                disabled={downloading}
+                className="flex items-center gap-3 bg-green-600 hover:bg-green-500 disabled:opacity-60 text-white font-semibold px-6 py-3 rounded-xl transition-all hover:scale-[1.02] shadow-lg shadow-green-600/25"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                </svg>
+                {downloading ? 'Generating your PDF...' : 'Preview — Download Sample PDF'}
+              </button>
+              <p className="text-xs text-zinc-600 mt-3">Full guide unlocks after purchase. Sample available instantly.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {GUIDE_SECTIONS.map(sec => (
+                <div key={sec.letter} className="flex items-start gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors">
+                  <span className="text-green-400 font-bold text-sm w-5 shrink-0">{sec.letter}</span>
+                  <span className="text-zinc-400 text-xs leading-relaxed">{sec.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -258,8 +293,8 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Student results</p>
-            <h2 className="text-4xl font-bold">What students say</h2>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Results</p>
+            <h2 className="text-4xl font-bold">What SA operators say</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((t, i) => (
@@ -281,21 +316,21 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Pricing</p>
-            <h2 className="text-4xl font-bold">Simple, transparent pricing</h2>
+            <h2 className="text-4xl font-bold">One investment. Everything included.</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
 
-            {/* Self-paced */}
+            {/* Guide only */}
             <div className="card-dark rounded-2xl p-8">
-              <div className="text-sm font-semibold text-zinc-400 mb-2">Self-Paced</div>
-              <div className="text-5xl font-black mb-1">£297</div>
-              <div className="text-zinc-500 text-sm mb-8">one-time payment</div>
+              <div className="text-sm font-semibold text-zinc-400 mb-2">The Blueprint Guide</div>
+              <div className="text-5xl font-black mb-1">£97</div>
+              <div className="text-zinc-500 text-sm mb-8">one-time payment, instant access</div>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Full 8-week curriculum',
-                  'Lifetime access + updates',
-                  'Private community access',
-                  'All project files & code',
+                  'Full 26-chapter A to Z PDF guide',
+                  'Instant download after purchase',
+                  '30-day launch checklist',
+                  'All future guide updates',
                   '14-day money-back guarantee',
                 ].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-zinc-300">
@@ -307,24 +342,24 @@ export default function Home() {
                 href="#contact"
                 className="block text-center w-full border border-green-500 text-green-400 hover:bg-green-500/10 font-semibold py-3 rounded-xl transition-colors"
               >
-                Enrol — Self-Paced
+                Get the Blueprint
               </a>
             </div>
 
-            {/* Live cohort */}
+            {/* Full package */}
             <div className="relative rounded-2xl p-8 bg-green-600 border-glow">
-              <div className="absolute top-4 right-4 bg-amber-400 text-black text-xs font-bold px-2 py-0.5 rounded-full">Most Popular</div>
-              <div className="text-sm font-semibold text-green-200 mb-2">Live Cohort</div>
-              <div className="text-5xl font-black mb-1">£497</div>
+              <div className="absolute top-4 right-4 bg-amber-400 text-black text-xs font-bold px-2 py-0.5 rounded-full">Best Value</div>
+              <div className="text-sm font-semibold text-green-200 mb-2">Blueprint + Mentorship</div>
+              <div className="text-5xl font-black mb-1">£297</div>
               <div className="text-green-200 text-sm mb-8">one-time payment</div>
               <ul className="space-y-3 mb-8">
                 {[
-                  'Everything in Self-Paced',
-                  'Weekly live Q&A sessions',
-                  'Direct access to instructors',
-                  'Peer accountability groups',
-                  'Portfolio review & feedback',
-                  'Certificate of completion',
+                  'Everything in the Blueprint',
+                  'Four 1-to-1 coaching calls',
+                  'Property and deal review',
+                  'Listing and pricing audit',
+                  'Access to private SA community',
+                  'Priority email support for 90 days',
                 ].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-white">
                     <span className="text-white/70">✓</span> {f}
@@ -335,13 +370,14 @@ export default function Home() {
                 href="#contact"
                 className="block text-center w-full bg-white text-green-700 hover:bg-green-50 font-bold py-3 rounded-xl transition-colors"
               >
-                Enrol — Live Cohort
+                Get the Full Package
               </a>
             </div>
 
           </div>
           <p className="text-center text-zinc-500 text-sm mt-8">
-            Need a team licence? <a href="#contact" className="text-green-400 hover:underline">Get in touch</a> for group pricing.
+            Running a team or want to train your staff?{' '}
+            <a href="#contact" className="text-green-400 hover:underline">Contact us</a> for group rates.
           </p>
         </div>
       </section>
@@ -361,7 +397,7 @@ export default function Home() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
                   {f.q}
-                  <span className={`shrink-0 text-zinc-500 transition-transform ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
+                  <span className={`shrink-0 text-zinc-500 transition-transform duration-200 ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-5 text-sm text-zinc-400 leading-relaxed border-t border-white/5 pt-4">
@@ -374,20 +410,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CONTACT / ENROL ── */}
+      {/* ── CONTACT ── */}
       <section id="contact" className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Get started</p>
-            <h2 className="text-4xl font-bold mb-4">Ready to build with AI?</h2>
-            <p className="text-zinc-400">Fill in your details and we&apos;ll send you everything you need to get started.</p>
+            <h2 className="text-4xl font-bold mb-4">Ready to build your SA business?</h2>
+            <p className="text-zinc-400">Fill in your details and we will send you access within minutes.</p>
           </div>
 
           {submitted ? (
             <div className="card-dark rounded-2xl p-10 text-center">
-              <div className="text-4xl mb-4">🎉</div>
-              <h3 className="text-xl font-bold mb-2">You&apos;re on the list!</h3>
-              <p className="text-zinc-400 text-sm">We&apos;ll be in touch within 24 hours with next steps.</p>
+              <div className="text-4xl mb-4">🏠</div>
+              <h3 className="text-xl font-bold mb-2">You&apos;re in.</h3>
+              <p className="text-zinc-400 text-sm">Check your inbox — your access details will be with you within the next few minutes.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="card-dark rounded-2xl p-8 space-y-5">
@@ -414,22 +450,25 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-zinc-300 mb-2">Tell us about yourself <span className="text-zinc-600">(optional)</span></label>
-                <textarea
-                  rows={3}
+                <label className="block text-sm font-medium text-zinc-300 mb-2">Which package interests you?</label>
+                <select
                   value={formData.message}
                   onChange={e => setFormData(d => ({ ...d, message: e.target.value }))}
-                  placeholder="What do you want to build with AI?"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-green-500 transition-colors resize-none"
-                />
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-green-500 transition-colors"
+                >
+                  <option value="" className="bg-zinc-900">Select an option</option>
+                  <option value="blueprint" className="bg-zinc-900">The Blueprint Guide — £97</option>
+                  <option value="full" className="bg-zinc-900">Blueprint + Mentorship — £297</option>
+                  <option value="team" className="bg-zinc-900">Team or group licence</option>
+                </select>
               </div>
               <button
                 type="submit"
                 className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-4 rounded-xl transition-all hover:scale-[1.01] shadow-lg shadow-green-600/25"
               >
-                Reserve My Spot &rarr;
+                Get Instant Access &rarr;
               </button>
-              <p className="text-center text-xs text-zinc-600">No spam. Unsubscribe anytime. 14-day refund guarantee.</p>
+              <p className="text-center text-xs text-zinc-600">No spam. 14-day full refund. Cancel anytime.</p>
             </form>
           )}
         </div>
@@ -438,13 +477,13 @@ export default function Home() {
       {/* ── FOOTER ── */}
       <footer className="border-t border-white/5 px-6 py-10">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
-          <span className="font-bold text-zinc-400"><span className="text-gradient">AI</span> Mastery</span>
+          <span className="font-bold text-zinc-400"><span className="text-gradient">SA</span> Blueprint</span>
           <div className="flex gap-6">
             {NAV_LINKS.map(l => (
               <a key={l.href} href={l.href} className="hover:text-zinc-400 transition-colors">{l.label}</a>
             ))}
           </div>
-          <span>© {new Date().getFullYear()} AI Mastery. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} SA Blueprint. All rights reserved.</span>
         </div>
       </footer>
 
