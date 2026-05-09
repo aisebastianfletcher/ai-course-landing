@@ -134,7 +134,7 @@ export default function Home() {
         </div>
         <a
           href="#contact"
-          className="text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg transition-colors"
+          className="text-sm font-semibold bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg transition-colors"
         >
           Enrol Now
         </a>
@@ -143,10 +143,10 @@ export default function Home() {
       {/* ── HERO ── */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" />
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-green-600/10 blur-[120px] pointer-events-none" />
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-medium mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-300 text-xs font-medium mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             Next cohort starts in June 2026 — limited spots
           </div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-6">
@@ -159,7 +159,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#pricing"
-              className="w-full sm:w-auto text-center font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl text-base transition-all hover:scale-[1.02] shadow-lg shadow-indigo-600/25"
+              className="w-full sm:w-auto text-center font-semibold bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-xl text-base transition-all hover:scale-[1.02] shadow-lg shadow-green-600/25"
             >
               See Pricing &rarr;
             </a>
@@ -171,10 +171,10 @@ export default function Home() {
             </a>
           </div>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-zinc-500">
-            <span className="flex items-center gap-2"><span className="text-indigo-400">✓</span> 8-week live cohort</span>
-            <span className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Lifetime access</span>
-            <span className="flex items-center gap-2"><span className="text-indigo-400">✓</span> 14-day money-back guarantee</span>
-            <span className="flex items-center gap-2"><span className="text-indigo-400">✓</span> Private community</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> 8-week live cohort</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> Lifetime access</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> 14-day money-back guarantee</span>
+            <span className="flex items-center gap-2"><span className="text-green-400">✓</span> Private community</span>
           </div>
         </div>
       </section>
@@ -200,7 +200,7 @@ export default function Home() {
       <section id="about" className="py-24 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">Who this is for</p>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Who this is for</p>
             <h2 className="text-4xl font-bold mb-6 leading-tight">
               Built for people who want to <span className="text-gradient">build</span>, not just learn.
             </h2>
@@ -232,18 +232,18 @@ export default function Home() {
       <section id="curriculum" className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">The curriculum</p>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">The curriculum</p>
             <h2 className="text-4xl font-bold">8 weeks. Real projects. Zero fluff.</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {MODULES.map((m, i) => (
-              <div key={i} className="card-dark rounded-2xl p-7 hover:border-indigo-500/30 transition-colors">
-                <div className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">{m.week}</div>
+              <div key={i} className="card-dark rounded-2xl p-7 hover:border-green-500/30 transition-colors">
+                <div className="text-xs font-semibold text-green-400 uppercase tracking-widest mb-2">{m.week}</div>
                 <h3 className="text-lg font-bold mb-4">{m.title}</h3>
                 <ul className="space-y-2">
                   {m.points.map((p, j) => (
                     <li key={j} className="flex items-start gap-2 text-sm text-zinc-400">
-                      <span className="text-indigo-400 mt-0.5 shrink-0">→</span>
+                      <span className="text-green-400 mt-0.5 shrink-0">→</span>
                       {p}
                     </li>
                   ))}
@@ -258,7 +258,7 @@ export default function Home() {
       <section className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">Student results</p>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Student results</p>
             <h2 className="text-4xl font-bold">What students say</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -280,7 +280,7 @@ export default function Home() {
       <section id="pricing" className="py-24 px-6 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">Pricing</p>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Pricing</p>
             <h2 className="text-4xl font-bold">Simple, transparent pricing</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -299,24 +299,24 @@ export default function Home() {
                   '14-day money-back guarantee',
                 ].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-zinc-300">
-                    <span className="text-indigo-400">✓</span> {f}
+                    <span className="text-green-400">✓</span> {f}
                   </li>
                 ))}
               </ul>
               <a
                 href="#contact"
-                className="block text-center w-full border border-indigo-500 text-indigo-400 hover:bg-indigo-500/10 font-semibold py-3 rounded-xl transition-colors"
+                className="block text-center w-full border border-green-500 text-green-400 hover:bg-green-500/10 font-semibold py-3 rounded-xl transition-colors"
               >
                 Enrol — Self-Paced
               </a>
             </div>
 
             {/* Live cohort */}
-            <div className="relative rounded-2xl p-8 bg-indigo-600 border-glow">
+            <div className="relative rounded-2xl p-8 bg-green-600 border-glow">
               <div className="absolute top-4 right-4 bg-amber-400 text-black text-xs font-bold px-2 py-0.5 rounded-full">Most Popular</div>
-              <div className="text-sm font-semibold text-indigo-200 mb-2">Live Cohort</div>
+              <div className="text-sm font-semibold text-green-200 mb-2">Live Cohort</div>
               <div className="text-5xl font-black mb-1">£497</div>
-              <div className="text-indigo-200 text-sm mb-8">one-time payment</div>
+              <div className="text-green-200 text-sm mb-8">one-time payment</div>
               <ul className="space-y-3 mb-8">
                 {[
                   'Everything in Self-Paced',
@@ -333,7 +333,7 @@ export default function Home() {
               </ul>
               <a
                 href="#contact"
-                className="block text-center w-full bg-white text-indigo-700 hover:bg-indigo-50 font-bold py-3 rounded-xl transition-colors"
+                className="block text-center w-full bg-white text-green-700 hover:bg-green-50 font-bold py-3 rounded-xl transition-colors"
               >
                 Enrol — Live Cohort
               </a>
@@ -341,7 +341,7 @@ export default function Home() {
 
           </div>
           <p className="text-center text-zinc-500 text-sm mt-8">
-            Need a team licence? <a href="#contact" className="text-indigo-400 hover:underline">Get in touch</a> for group pricing.
+            Need a team licence? <a href="#contact" className="text-green-400 hover:underline">Get in touch</a> for group pricing.
           </p>
         </div>
       </section>
@@ -350,14 +350,14 @@ export default function Home() {
       <section id="faq" className="py-24 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">FAQ</p>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">FAQ</p>
             <h2 className="text-4xl font-bold">Common questions</h2>
           </div>
           <div className="space-y-3">
             {FAQS.map((f, i) => (
               <div key={i} className="card-dark rounded-xl overflow-hidden">
                 <button
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-medium hover:text-indigo-300 transition-colors"
+                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-medium hover:text-green-300 transition-colors"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
                   {f.q}
@@ -378,7 +378,7 @@ export default function Home() {
       <section id="contact" className="py-24 px-6 bg-white/[0.02] border-t border-white/5">
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-4">Get started</p>
+            <p className="text-green-400 text-sm font-semibold uppercase tracking-widest mb-4">Get started</p>
             <h2 className="text-4xl font-bold mb-4">Ready to build with AI?</h2>
             <p className="text-zinc-400">Fill in your details and we&apos;ll send you everything you need to get started.</p>
           </div>
@@ -399,7 +399,7 @@ export default function Home() {
                   value={formData.name}
                   onChange={e => setFormData(d => ({ ...d, name: e.target.value }))}
                   placeholder="Jane Smith"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-green-500 transition-colors"
                 />
               </div>
               <div>
@@ -410,7 +410,7 @@ export default function Home() {
                   value={formData.email}
                   onChange={e => setFormData(d => ({ ...d, email: e.target.value }))}
                   placeholder="jane@company.com"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-green-500 transition-colors"
                 />
               </div>
               <div>
@@ -420,12 +420,12 @@ export default function Home() {
                   value={formData.message}
                   onChange={e => setFormData(d => ({ ...d, message: e.target.value }))}
                   placeholder="What do you want to build with AI?"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-indigo-500 transition-colors resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-green-500 transition-colors resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-4 rounded-xl transition-all hover:scale-[1.01] shadow-lg shadow-indigo-600/25"
+                className="w-full bg-green-600 hover:bg-green-500 text-white font-semibold py-4 rounded-xl transition-all hover:scale-[1.01] shadow-lg shadow-green-600/25"
               >
                 Reserve My Spot &rarr;
               </button>

@@ -20,7 +20,7 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        'hero-gradient': 'radial-gradient(ellipse at 60% 0%, rgba(99,102,241,0.25) 0%, transparent 60%), radial-gradient(ellipse at 0% 80%, rgba(139,92,246,0.15) 0%, transparent 50%)',
+        'hero-gradient': 'radial-gradient(ellipse at 60% 0%, rgba(34,197,94,0.18) 0%, transparent 60%), radial-gradient(ellipse at 0% 80%, rgba(22,163,74,0.12) 0%, transparent 50%)',
       },
     },
   },
